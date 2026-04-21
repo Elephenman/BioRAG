@@ -10,11 +10,9 @@ venv/
 .venv/
 
 # Data & model cache (keep .gitkeep)
-data/*.db
-data/*.json
-data/*.log
+data/
 !data/.gitkeep
-models/*
+models/
 !models/.gitkeep
 
 # IDE
