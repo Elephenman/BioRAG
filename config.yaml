@@ -1,0 +1,95 @@
+knowledge_base:
+  path: "A:\\claudeworks\\知识库"
+  watch: false
+  ignore:
+    - ".git"
+    - ".obsidian"
+    - ".trash"
+    - "*.tmp"
+    - "*.bak"
+    - "*/.*"
+
+data:
+  dir: "./data"
+
+embedding:
+  provider: "local"
+  model: "BAAI/bge-small-zh-v1.5"
+  device: "cpu"
+  dimension: 512
+  batch_size: 32
+  model_cache_dir: "./models"
+
+chunking:
+  md:
+    chunk_size: 500
+    chunk_overlap: 100
+    separators: ["\n## ", "\n### ", "\n#### ", "\n\n", "\n", " "]
+    extract_headings: true
+  r_code:
+    chunk_size: 800
+    chunk_overlap: 150
+    separators: ["\n# ", "\n\n", "\n"]
+    preserve_functions: true
+  pdf:
+    chunk_size: 500
+    chunk_overlap: 100
+    separators: ["\n\n", "\n", " "]
+  ipynb:
+    chunk_size: 800
+    chunk_overlap: 150
+    extract_code_cells: true
+    extract_markdown_cells: true
+
+retrieval:
+  level_1:
+    top_k: 3
+    max_chars_per_chunk: 200
+    max_total_chars: 600
+  level_2:
+    top_k: 8
+    max_chars_per_chunk: 300
+    max_total_chars: 2500
+  level_3:
+    top_k: 5
+    max_chars_per_chunk: null
+    max_total_chars: null
+  min_similarity: 0.3
+  default_category: null
+
+categories:
+  bioinfo:
+    - "生物信息学"
+    - "生物物理"
+    - "香港欧文虫_组会汇报材料包"
+  r_code:
+    - "R代码库"
+  ml:
+    - "机器学习"
+  other:
+    - "奇思妙想"
+    - "小说"
+    - "docs"
+
+engine:
+  host: "127.0.0.1"
+  port: 8765
+  cors_origins:
+    - "http://localhost:*"
+    - "tauri://localhost"
+  log_level: "INFO"
+  auto_start: true
+
+visualization:
+  umap:
+    n_neighbors: 15
+    min_dist: 0.1
+    metric: "cosine"
+    cache_enabled: true
+    cache_max_age_hours: 24
+
+logging:
+  level: "INFO"
+  file: "./data/biorag.log"
+  max_size_mb: 50
+  backup_count: 3
